@@ -5,7 +5,7 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 
 /**
- * forkjoin 计算100000000的和
+ * forkjoin 计算100000000的和  拆 和
  */
 class ForkJoinSumTask extends RecursiveTask<Integer> {
     private int length=MakeArray.arraySize/10;
