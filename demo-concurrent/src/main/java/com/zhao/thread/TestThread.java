@@ -21,7 +21,7 @@ public class TestThread {
 	
 	public static void main(String[] args) throws InterruptedException {
 		Thread endThread=new UseThread("aa");
-		endThread.setDaemon(true);//ÊØ»¤Ïß³Ì
+		endThread.setDaemon(true);////å®ˆæŠ¤çº¿ç¨‹
 		endThread.start();
 		endThread.sleep(20);
 		endThread.interrupt();

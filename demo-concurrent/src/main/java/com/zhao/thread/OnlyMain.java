@@ -5,20 +5,20 @@ import java.lang.management.ThreadInfo;
 import java.lang.management.ThreadMXBean;
 
 /**
- * ÊØ»¤Ïß³Ì
+ * å®ˆæŠ¤çº¿ç¨‹
  * @author Administrator
  *
  */
 public class OnlyMain {
 
 	public static void main(String[] args) {
-		//ĞéÄâ»úÏß³Ì¹ÜÀí½Ó¿Ú
+		//è™šæ‹Ÿæœºçº¿ç¨‹ç®¡ç†æ¥å£
 		ThreadMXBean bean=ManagementFactory.getThreadMXBean();
 		ThreadInfo[] infos=bean.dumpAllThreads(false, false);
 		for (ThreadInfo threadInfo : infos) {
-			System.out.println("Ïß³Ìid:"+threadInfo.getThreadId()+",Ïß³ÌÃû£º"+threadInfo.getThreadName());
+			System.out.println("çº¿ç¨‹id:"+threadInfo.getThreadId()+",çº¿ç¨‹åï¼š"+threadInfo.getThreadName());
 		}
-		
-		//endThread.setDaemon(true);//ÊØ»¤Ïß³Ì
+
+		//endThread.setDaemon(true);//å®ˆæŠ¤çº¿ç¨‹
 	}
 }

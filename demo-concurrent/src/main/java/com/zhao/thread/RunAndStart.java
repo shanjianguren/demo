@@ -2,9 +2,9 @@ package com.zhao.thread;
 
 
 /**
- * 
+ *
  * @author Administrator
- *ÁË½ârun ºÍstartµÄÇø±ğ
+ *äº†è§£run å’Œstartçš„åŒºåˆ«
  */
 public class RunAndStart {
 
@@ -12,19 +12,19 @@ public class RunAndStart {
 		public void run() {
 			int i=90;
 			while(i>0) {
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					System.out.println("Ïß³ÌÃû£º"+Thread.currentThread().getName()+"----"+i--);
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				System.out.println("çº¿ç¨‹åï¼š"+Thread.currentThread().getName()+"----"+i--);
 			}
 		}
 	}
 	public static void main(String[] args) {
 		UseThreadRun test=new UseThreadRun();
 		test.setName("test");
-		test.setPriority(5);//Ïß³ÌÓÅÏÈ¼¶
+		test.setPriority(5);//çº¿ç¨‹ä¼˜å…ˆçº§
 		test.run();
 		test.start();
 	}

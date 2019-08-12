@@ -23,7 +23,7 @@ public class TestRunnable {
 		UseRunnable use=new UseRunnable();
 		Thread test=new Thread(use, "test");
 		test.start();
-		Thread.sleep(20);
+		Thread.sleep(2000);
 		test.interrupt();
 	}
 
