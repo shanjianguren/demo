@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class MakeArray {
-    public static final int arraySize  = 30000000;
+    public static final int arraySize  = 90000000;
 
     public static  List<Integer> makeArray(){
        List<Integer> result=new ArrayList<>();
