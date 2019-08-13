@@ -1,4 +1,4 @@
-package com.zhao.pool;
+package com.zhao.thread.pool;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;

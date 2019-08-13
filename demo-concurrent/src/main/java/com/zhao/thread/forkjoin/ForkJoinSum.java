@@ -1,4 +1,4 @@
-package com.zhao.forkjoin;
+package com.zhao.thread.forkjoin;
 
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;
