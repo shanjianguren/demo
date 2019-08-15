@@ -36,19 +36,20 @@ public class BulletPool {
         synchronized(o){
             try {
                 Boolean falg=true;
-                while (falg){
-                    if(pool.size()>=20 ){
-                        System.out.println("线程"+Thread.currentThread().getName()+"等待创建子弹, "+pool.size());
-                        o.wait();
-                    }else if(pool.size()<20&&falg){
+
+                while (pool.size()>=20){
+                    System.out.println("线程"+Thread.currentThread().getName()+"等待创建子弹, "+pool.size());
+                    o.wait();
+                }
+                    if(pool.size()<20){
                         System.out.println("线程"+Thread.currentThread().getName()+"创建子弹   "+pool.size());
-                        o.notifyAll();
                         pool.addLast(new BulletPool(1,1));
                         falg=false;
+
                     }
-                }
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
+                Thread.sleep(190);
+                o.notifyAll();
+                }catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
@@ -67,10 +68,11 @@ public class BulletPool {
                 if (pool.size()>0){
                     System.out.println("线程"+Thread.currentThread().getName()+"消费子弹  "+pool.size());
                     pool.removeFirst();
-                    o.notifyAll();
+
 
                 }
-                Thread.sleep(300);
+                Thread.sleep(190);
+                o.notifyAll();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -80,11 +82,11 @@ public class BulletPool {
 
 
     public static void main(String[] args) throws InterruptedException {
-        for (int i=0; i<40;i++){
+        for (int i=0; i<100;i++){
             new Thread(()->poo.makeBullet()).start();
 
         }
-        for (int i=0; i<40;i++){
+        for (int i=0; i<100;i++){
             new Thread(()->poo.expenseBullet()).start();
         }
         System.out.println("````````````````````````````````````````````````````````````"+pool.size());
