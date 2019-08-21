@@ -11,6 +11,8 @@ import java.util.concurrent.locks.Lock;
 public class SelfLock implements Lock {
 
     public static class  Sync extends AbstractQueuedSynchronizer{
+
+        //必须是重写 override
         @Override
         protected boolean isHeldExclusively(){
             return getState()==1;
@@ -34,7 +36,8 @@ public class SelfLock implements Lock {
          * 释放锁
          * @return
          */
-        protected boolean tryRelease(){
+        @Override
+        protected boolean tryRelease(int ag){
             if(getState()==0){
                 throw  new IllegalMonitorStateException();
             }
@@ -50,7 +53,7 @@ public class SelfLock implements Lock {
     }
 
     private Sync sync=new Sync();
-    @Override
+
     public void lock() {
         System.out.println(Thread.currentThread().getName()+"lock");
         sync.acquire(1);
