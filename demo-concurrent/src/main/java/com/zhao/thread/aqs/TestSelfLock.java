@@ -4,6 +4,7 @@ import java.util.concurrent.locks.Lock;
 
 public class TestSelfLock {
     final Lock lock=new SelfLock();
+
     private void test()  {
 
         class  Worker extends Thread{
@@ -21,12 +22,12 @@ public class TestSelfLock {
             }
         }
 
-        for (int i=0;i<4;i++){
+        for (int i=0;i<7;i++){
             new Worker().start();
         }
         for (int i=0;i<4;i++){
             try {
-                Thread.sleep(1000);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
