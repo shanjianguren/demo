@@ -5,6 +5,6 @@ package com.zhao.vip.rw;
  */
 public interface GoodsService {
 
-	public GoodsInfo getNum();//获得商品的信息
-	public void setNum(int number);//设置商品的数量
+	public GoodsInfo getNum() throws InterruptedException;//获得商品的信息
+	public void setNum(int number) throws InterruptedException;//设置商品的数量
 }

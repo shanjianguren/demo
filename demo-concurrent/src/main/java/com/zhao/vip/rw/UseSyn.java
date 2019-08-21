@@ -1,7 +1,5 @@
 package com.zhao.vip.rw;
 
-import cn.enjoyedu.tools.SleepTools;
-
 /**
  *类说明：用内置锁来实现商品服务接口
  */
@@ -14,14 +12,14 @@ public class UseSyn implements GoodsService {
 	}
 
 	@Override
-	public synchronized GoodsInfo getNum() {
-		SleepTools.ms(5);
+	public synchronized GoodsInfo getNum() throws InterruptedException {
+		Thread.sleep(5);
 		return this.goodsInfo;
 	}
 
 	@Override
-	public synchronized void setNum(int number) {
-		SleepTools.ms(5);
+	public synchronized void setNum(int number) throws InterruptedException {
+		Thread.sleep(5);
 		goodsInfo.changeNumber(number);
 
 	}

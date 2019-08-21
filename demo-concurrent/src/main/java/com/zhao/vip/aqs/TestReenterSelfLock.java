@@ -1,7 +1,5 @@
 package com.zhao.vip.aqs;
 
-import cn.enjoyedu.tools.SleepTools;
-
 import java.util.concurrent.locks.Lock;
 
 /**
@@ -30,7 +28,11 @@ public class TestReenterSelfLock {
         class Worker extends Thread {
 			public void run() {
                 System.out.println(Thread.currentThread().getName());
-                SleepTools.second(1);
+                try {
+                    Thread.sleep(11);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 reenter(3);
             }
         }
@@ -41,7 +43,11 @@ public class TestReenterSelfLock {
         }
         // 主线程每隔1秒换行
         for (int i = 0; i < 100; i++) {
-        	SleepTools.second(1);
+            try {
+                Thread.sleep(11);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

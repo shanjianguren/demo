@@ -1,7 +1,5 @@
 package com.zhao.vip.rw;
 
-import cn.enjoyedu.tools.SleepTools;
-
 import java.util.Random;
 
 /**
@@ -22,7 +20,7 @@ public class BusiApp {
         public void run() {
             long start = System.currentTimeMillis();
             for(int i=0;i<100;i++){//操作100次
-                goodsService.getNum();
+//                goodsService.getNum();
             }
             System.out.println(Thread.currentThread().getName()+"读取商品数据耗时："
              +(System.currentTimeMillis()-start)+"ms");
@@ -43,8 +41,12 @@ public class BusiApp {
             long start = System.currentTimeMillis();
             Random r = new Random();
             for(int i=0;i<10;i++){//操作10次
-            	SleepTools.ms(50);
-                goodsService.setNum(r.nextInt(10));
+                try {
+                    Thread.sleep(11);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+//                goodsService.setNum(r.nextInt(10));
             }
             System.out.println(Thread.currentThread().getName()
             		+"写商品数据耗时："+(System.currentTimeMillis()-start)+"ms---------");
@@ -61,7 +63,11 @@ public class BusiApp {
                 Thread getT = new Thread(new GetThread(goodsService));
                 getT.start();           	
             }
-            SleepTools.ms(100);
+            try {
+                Thread.sleep(11);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             setT.start();
         }
     }

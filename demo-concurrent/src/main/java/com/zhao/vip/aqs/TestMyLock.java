@@ -1,7 +1,5 @@
 package com.zhao.vip.aqs;
 
-import cn.enjoyedu.tools.SleepTools;
-
 import java.util.concurrent.locks.Lock;
 
 /**
@@ -19,7 +17,11 @@ public class TestMyLock {
                 lock.lock();
                 System.out.println(Thread.currentThread().getName());
                 try {
-                    SleepTools.second(1);
+                    try {
+                        Thread.sleep(11);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 } finally {
                     lock.unlock();
                 }
@@ -33,7 +35,11 @@ public class TestMyLock {
         }
         // 主线程每隔1秒换行
         for (int i = 0; i < 10; i++) {
-        	SleepTools.second(1);
+            try {
+                Thread.sleep(11);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             //System.out.println();
         }
     }

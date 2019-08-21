@@ -1,6 +1,5 @@
 package com.zhao.vip.rw;
 
-import cn.enjoyedu.tools.SleepTools;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
@@ -25,7 +24,11 @@ public class UseRwLock  implements GoodsService{
     public GoodsInfo getNum() {
         getLock.lock();
         try{
-            SleepTools.ms(5);
+            try {
+                Thread.sleep(11);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             return this.goodsInfo;
         }finally {
             getLock.unlock();
@@ -36,7 +39,11 @@ public class UseRwLock  implements GoodsService{
     public void setNum(int number) {
         setLock.lock();
         try{
-            SleepTools.ms(5);
+            try {
+                Thread.sleep(11);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             goodsInfo.changeNumber(number);
         }finally {
             setLock.unlock();
