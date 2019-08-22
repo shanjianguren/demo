@@ -33,7 +33,7 @@ private Lock lock =new ReenterSelfLock();
                 } finally {
                     lock.unlock();
                 }
-//                reenter(3);
+                reenter(3);
             }
         }
         for(int i=0;i<5;i++){

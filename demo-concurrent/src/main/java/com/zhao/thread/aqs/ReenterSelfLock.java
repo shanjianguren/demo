@@ -11,7 +11,7 @@ public class ReenterSelfLock implements Lock {
     @Override
     public void lock() {
         System.out.println(Thread.currentThread().getName() +"------waiting Lock");
-        sync.tryAcquire(0);
+        sync.acquire(1);
         System.out.println(Thread.currentThread().getName()+" =----------Locked");
     }
 
@@ -22,7 +22,7 @@ public class ReenterSelfLock implements Lock {
 
     @Override
     public boolean tryLock() {
-        return   sync.tryAcquire(0);
+        return   sync.tryAcquire(1);
     }
 
     @Override
@@ -33,19 +33,18 @@ public class ReenterSelfLock implements Lock {
     @Override
     public void unlock() {
         System.out.println(Thread.currentThread().getName()+"----------ready release");
-        sync.tryRelease(1);
+        sync.release(1);
         System.out.println(Thread.currentThread().getName()+"----------readied release，已经释放锁");
     }
 
-    @Override
     public Condition newCondition() {
         return sync.newCondition();
     }
 
-    public class Sync extends AbstractQueuedSynchronizer {
+    public static class Sync extends AbstractQueuedSynchronizer {
 
          protected boolean isHeldExclusively() {
-            if (getState() > 1) {
+            if (getState() > 0) {
                 return true;
             }
             return false;
@@ -79,10 +78,8 @@ public class ReenterSelfLock implements Lock {
             setState(getState()-1);
             if(getState()==0){
                 setExclusiveOwnerThread(null);
-                setState(0);
-                return  true;
             }
-            return false;
+            return true;
         }
 
         Condition newCondition(){
