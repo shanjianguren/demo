@@ -11,6 +11,10 @@
     <modules>
         <module>demo-concurrent</module>
         <module>demo-could</module>
+        <module>demo-could-api</module>
+        <module>demo-could-provlder-product</module>
+        <module>demo-could-security</module>
+        <module>demo-could-eureka</module>
     </modules>
 <dependencies>
     <dependency>

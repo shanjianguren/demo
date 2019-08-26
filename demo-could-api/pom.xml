@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>demo-could</artifactId>
+    <artifactId>demo-could-api</artifactId>
 
 
 </project>
