@@ -1,8 +1,13 @@
 server:
-  port: 10002
+  port: 10001
 spring:
   datasource:
     url: jdbc:mysql://116.62.163.237:3306/test_enjoy?useSSL=false&useUnicode=true&characterEncoding=utf-8
     driver-class-name: com.mysql.jdbc.Driver
-    username: root
     password: 1234qwer
+    username: root
+eureka:
+  client:
+    register-with-eureka: false
+    service-url:
+      deafultZone:
