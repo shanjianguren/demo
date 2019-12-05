@@ -16,6 +16,7 @@
         <module>demo-could-security</module>
         <module>demo-cloud-eureka1</module>
         <module>demo-cloud-eureka2</module>
+        <module>demo-redis</module>
     </modules>
     <properties>
         <jdk.version>1.8</jdk.version>
@@ -66,7 +67,16 @@
                 <artifactId>spring-boot-devtools</artifactId>
                 <version>${spring.boot.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastJson</artifactId>
+                <version>1.2.17</version>
+            </dependency>
         </dependencies>
 <build>
     <plugins>
