@@ -1,5 +1,7 @@
 package com.zhao.vip.rw;
 
+import lombok.SneakyThrows;
+
 import java.util.Random;
 
 /**
@@ -16,11 +18,12 @@ public class BusiApp {
             this.goodsService = goodsService;
         }
 
+        @SneakyThrows
         @Override
         public void run() {
             long start = System.currentTimeMillis();
             for(int i=0;i<100;i++){//操作100次
-//                goodsService.getNum();
+                goodsService.getNum();
             }
             System.out.println(Thread.currentThread().getName()+"读取商品数据耗时："
              +(System.currentTimeMillis()-start)+"ms");
@@ -33,20 +36,21 @@ public class BusiApp {
 
         private GoodsService goodsService;
         public SetThread(GoodsService goodsService) {
-            this.goodsService = goodsService;
+            this.goodsService =goodsService;
         }
 
+        @SneakyThrows
         @Override
         public void run() {
             long start = System.currentTimeMillis();
             Random r = new Random();
             for(int i=0;i<10;i++){//操作10次
                 try {
-                    Thread.sleep(11);
+                    Thread.sleep(1);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-//                goodsService.setNum(r.nextInt(10));
+                goodsService.setNum(r.nextInt(10));
             }
             System.out.println(Thread.currentThread().getName()
             		+"写商品数据耗时："+(System.currentTimeMillis()-start)+"ms---------");
@@ -56,7 +60,7 @@ public class BusiApp {
 
     public static void main(String[] args) throws InterruptedException {
         GoodsInfo goodsInfo = new GoodsInfo("Cup",100000,10000);
-        GoodsService goodsService = new UseRwLock(goodsInfo);
+        GoodsService goodsService = new UseSyn(goodsInfo);
         for(int i = 0;i<minthreadCount;i++){
             Thread setT = new Thread(new SetThread(goodsService));
             for(int j=0;j<readWriteRatio;j++) {

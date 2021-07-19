@@ -20,12 +20,14 @@ public class UseRwLock  implements GoodsService{
         this.goodsInfo = goodsInfo;
     }
 
+
     @Override
     public GoodsInfo getNum() {
         getLock.lock();
         try{
             try {
                 Thread.sleep(11);
+                System.out.println("rw");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -41,6 +43,7 @@ public class UseRwLock  implements GoodsService{
         try{
             try {
                 Thread.sleep(11);
+                System.out.println("rw");
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
