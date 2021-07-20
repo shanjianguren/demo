@@ -1,24 +1,17 @@
 package com.zhao.thread;
 
-import com.zhao.thread.deadLock.User;
-
 public class SingleDemo {
 
-    private static User user;
 
-    public SingleDemo() {
+    private SingleDemo() {
 
     }
 
+    private static class SingleHolder  {
+        public static SingleDemo demo   = new SingleDemo();
+    }
 
-    public static User getInstance() {
-        if (user == null) {
-            synchronized (user) {
-                if (user == null) {
-                    user = new User();
-                }
-            }
-        }
-        return user;
+    private static SingleDemo getInstance(){
+        return SingleHolder.demo;
     }
 }
