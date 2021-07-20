@@ -1,6 +1,6 @@
 package com.zhao.vip.ch8b.assist;
 
-import cn.enjoyedu.ch8b.vo.QuestionInDBVo;
+import com.zhao.vip.ch8b.vo.QuestionInDBVo;
 
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class SL_QuestionBank {
 
     //题库数据存储
-    private static ConcurrentHashMap<Integer,QuestionInDBVo> questionBankMap
+    private static ConcurrentHashMap<Integer, QuestionInDBVo> questionBankMap
             = new ConcurrentHashMap<>();
     //定时任务池，负责定时更新题库数据
     private static ScheduledExecutorService updateQuestionBank
