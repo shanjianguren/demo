@@ -5,6 +5,10 @@ import com.zhao.vip.ch8a.vo.TaskResult;
 import com.zhao.vip.ch8a.vo.TaskResultType;
 
 import java.util.Random;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  *类说明：一个实际任务类，将数值加上一个随机数，并休眠随机时间
